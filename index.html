@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Certificate Viewer</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .certificate-container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .year-heading {
+            font-size: 1.5em;
+            margin-top: 20px;
+            color: #333;
+        }
+        .certificate {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin: 10px 0;
+            background-color: #f9f9f9;
+        }
+        .load-more {
+            display: block;
+            text-align: center;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+            margin: 20px auto;
+        }
+        .load-more:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="certificate-container" id="certificateContainer"></div>
+    <button class="load-more" onclick="loadMore()">Load More</button>
+
+    <script>
+        let certificatesData;
+        let currentIndex = 0;
+        const batchSize = 2;
+        let sortedYears;
+
+        // Fetch data from certificates.json
+        async function fetchData() {
+            try {
+                const response = await fetch('.docs/certificates.json');
+                certificatesData = await response.json();
+                sortedYears = Object.keys(certificatesData).sort((a, b) => b - a);
+                displayCertificates();
+            } catch (error) {
+                console.error('Error fetching certificate data:', error);
+            }
+        }
+
+        function displayCertificates() {
+            const container = document.getElementById("certificateContainer");
+            let displayed = 0;
+
+            for (let i = currentIndex; i < sortedYears.length; i++) {
+                const year = sortedYears[i];
+                const yearCertificates = certificatesData[year];
+                const yearContainer = document.createElement("div");
+                yearContainer.className = "year-group";
+
+                if (i === currentIndex) {
+                    const yearHeading = document.createElement("h2");
+                    yearHeading.className = "year-heading";
+                    yearHeading.innerText = `20${year}`;
+                    yearContainer.appendChild(yearHeading);
+                }
+
+                for (let j = 0; j < yearCertificates.length; j++) {
+                    if (displayed >= batchSize) return;
+
+                    const cert = yearCertificates[j];
+                    const certElement = document.createElement("div");
+                    certElement.className = "certificate";
+                    certElement.innerHTML = `
+                        <h3>${cert.name}</h3>
+                        <p><a href="${cert.url}" target="_blank">Certificate Link</a></p>
+                        <p><strong>Issued By:</strong> ${cert.issuedBy}</p>
+                        <p><strong>Issued On:</strong> ${cert.issuedOn}</p>
+                        <p><strong>Expires On:</strong> ${cert.expiresOn}</p>
+                        <p><strong>Credential ID:</strong> ${cert.credentialId}</p>
+                        <p><strong>Skills:</strong> ${cert.skills}</p>
+                    `;
+
+                    yearContainer.appendChild(certElement);
+                    displayed++;
+                }
+
+                container.appendChild(yearContainer);
+                currentIndex++;
+            }
+
+            if (currentIndex >= sortedYears.length) {
+                document.querySelector(".load-more").style.display = "none";
+            }
+        }
+
+        function loadMore() {
+            displayCertificates();
+        }
+
+        // Call fetchData on page load
+        window.onload = fetchData;
+    </script>
+</body>
+</html>

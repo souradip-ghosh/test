@@ -1,0 +1,53 @@
+{
+    "24": [
+        {
+            "name": "IBM Cloud Essentials",
+            "url": "https://www.credly.com/badges/cb3ce7c3-4a39-48c0-b5be-2f74cb8375b3",
+            "issuedBy": "IBM",
+            "issuedOn": "Feb-24",
+            "expiresOn": "Never",
+            "credentialId": "Credential ID d690a0896c0441da810bde6b9ef65e16",
+            "skills": ""
+        },
+        {
+            "name": "IBM Developer Jumpstart - Explorer",
+            "url": "https://www.credly.com/badges/587af7ab-1f12-4bdf-a24c-87b66be64355",
+            "issuedBy": "IBM",
+            "issuedOn": "Feb-24",
+            "expiresOn": "Never",
+            "credentialId": "Not Available",
+            "skills": "Artificial Intelligence (AI), Machine Learning, Data Science, Generative AI"
+        }
+    ],
+    "23": [
+        {
+            "name": "IBM Sterling Data Exchange Sales Foundation",
+            "url": "https://www.credly.com/badges/057d8965-4740-4803-bc48-594a9cc30484",
+            "issuedBy": "IBM",
+            "issuedOn": "Dec-23",
+            "expiresOn": "Dec-24",
+            "credentialId": "Not Available",
+            "skills": "Sterling File Gateway, Sterling Control Center, Sterling Integrator, Connect Direct, Sterling Secure Proxy"
+        },
+        {
+            "name": "Product Support Specialty - Experienced",
+            "url": "https://www.credly.com/badges/a2d6c3e0-6861-4b97-ac89-044add04e045",
+            "issuedBy": "IBM",
+            "issuedOn": "Nov-23",
+            "expiresOn": "Never",
+            "credentialId": "Not Available",
+            "skills": "Product Support, Sterling Integrator, B2B Software"
+        }
+    ],
+    "13": [
+        {
+            "name": "Aakash Android Application Programming",
+            "url": "Not Available",
+            "issuedBy": "IITB",
+            "issuedOn": "Feb-13",
+            "expiresOn": "Mar 2013",
+            "credentialId": "Credential ID ICT (MHRD)",
+            "skills": ""
+        }
+    ]
+}
