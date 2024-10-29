@@ -52,7 +52,7 @@
         // Fetch data from certificates.json
         async function fetchData() {
             try {
-                const response = await fetch('./docs/certificates.json');
+                const response = await fetch('.docs/certificates.json');
                 certificatesData = await response.json();
                 sortedYears = Object.keys(certificatesData).sort((a, b) => b - a);
                 displayCertificates();
